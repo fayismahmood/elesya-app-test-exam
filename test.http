@@ -1,0 +1,44 @@
+### Create Normal Exam
+POST http://localhost:3000/exams
+Content-Type: application/json
+
+{
+  "type": "normal",
+  "subject": "Mathematics",
+  "maxScore": 100,
+  "scoreDistributions": [
+    { "section_name": "Section A", "allocated_score": 40 },
+    { "section_name": "Section B", "allocated_score": 60 }
+  ],
+  "scoreMappings": [
+    { "min_score": 0, "max_score": 39, "status": "Fail" },
+    { "min_score": 40, "max_score": 100, "status": "Pass" }
+  ]
+}
+
+### Create Continuous Exam
+POST http://localhost:3000/exams
+Content-Type: application/json
+
+{
+  "type": "continuous",
+  "subject": "Science",
+  "maxScore": 50
+}
+
+### Get All Exams
+GET http://localhost:3000/exams
+
+### Create Result
+POST http://localhost:3000/results
+Content-Type: application/json
+
+{
+  "examId": 1,
+  "studentId": "STD001",
+  "obtainedScore": 85,
+  "metadata": { "section_a": 35, "section_b": 50 }
+}
+
+### Get All Results
+GET http://localhost:3000/results
